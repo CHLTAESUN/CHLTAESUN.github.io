@@ -108,9 +108,9 @@ a { color: inherit; text-decoration: none; }
 /* ===== 히어로 ===== */
 .hero {
   position: relative;
-  min-height: 40vh;
+  min-height: 46vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
   overflow: hidden;
@@ -119,15 +119,21 @@ a { color: inherit; text-decoration: none; }
     radial-gradient(ellipse at 50% 6%, rgba(150,120,200,0.18), rgba(150,120,200,0) 50%),
     linear-gradient(180deg, #1d1834 0%, var(--bg) 75%);
 }
-.hero .container { padding: 4rem 1.25rem; }
-.hero-brand {
-  font-size: clamp(3.5rem, 11vw, 6rem);
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--brand);
-  margin: 0 0 0.5rem;
-  text-shadow: 0 4px 40px rgba(232,220,181,0.25);
+/* 달 사진 — 원본 크기 가깝게(선명) + 가장자리 보라로 페이드 */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, 92%);
+  height: 290px;
+  background: url('/images/moon-photo.jpg') center 38% / cover no-repeat;
+  -webkit-mask: radial-gradient(ellipse 62% 64% at 50% 44%, #000 52%, transparent 80%);
+          mask: radial-gradient(ellipse 62% 64% at 50% 44%, #000 52%, transparent 80%);
+  pointer-events: none;
 }
+.hero .container { padding-bottom: 3.5rem; }
 .hero h1 { color: #f3eee2; position: relative; z-index: 3; text-shadow: 0 2px 22px rgba(10,8,16,0.85); }
 .hero p { color: #d7d0e0; position: relative; z-index: 3; text-shadow: 0 1px 12px rgba(10,8,16,0.8); }
 .hero-actions { position: relative; z-index: 3; }
