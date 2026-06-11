@@ -8,8 +8,8 @@ const { title, description } = Astro.props;
 const pageTitle = title ? `${title} · ${SITE.name}` : SITE.name;
 const pageDesc = description || SITE.description;
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
-// 링크 미리보기 카드 이미지 (담월 문구). ?v 올리면 카톡 이미지 캐시 갱신.
-const ogImage = new URL('/og.png?v=2', Astro.site).href;
+// 링크 미리보기 카드 이미지 (담월 문구). 카톡 캐시 갱신 시 파일명 og2->og3 식으로 변경.
+const ogImage = new URL('/og2.png', Astro.site).href;
 ---
 <!doctype html>
 <html lang="ko">
