@@ -14,31 +14,19 @@ const svg = `
       <stop offset="60%" stop-color="#15131f"/>
       <stop offset="100%" stop-color="#141020"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#f3ead3" stop-opacity="0.9"/>
-      <stop offset="55%" stop-color="#e8dcb5" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#e8dcb5" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="moon" cx="38%" cy="36%" r="70%">
-      <stop offset="0%" stop-color="#fdf9ee"/>
-      <stop offset="60%" stop-color="#eaddb8"/>
-      <stop offset="100%" stop-color="#cbb88e"/>
+    <radialGradient id="vign" cx="50%" cy="40%" r="75%">
+      <stop offset="60%" stop-color="#150f28" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0e0a1a" stop-opacity="0.6"/>
     </radialGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#vign)"/>
 
-  <!-- 달 + 후광 (우상단) -->
-  <circle cx="960" cy="170" r="230" fill="url(#glow)"/>
-  <circle cx="960" cy="170" r="92" fill="url(#moon)"/>
-  <circle cx="930" cy="150" r="14" fill="#c9b88a" opacity="0.35"/>
-  <circle cx="985" cy="195" r="10" fill="#c9b88a" opacity="0.3"/>
-  <circle cx="975" cy="135" r="8" fill="#c9b88a" opacity="0.28"/>
-
-  <!-- 브랜드 문구 -->
-  <text x="120" y="330" font-family="Batang, 'Malgun Gothic', serif" font-size="180" font-weight="700" fill="#f3eee2" letter-spacing="20">담월</text>
-  <text x="128" y="410" font-family="Batang, 'Malgun Gothic', serif" font-size="44" fill="#e8dcb5" letter-spacing="6">달빛을 담은 술 한 병</text>
-  <text x="128" y="470" font-family="Batang, 'Malgun Gothic', serif" font-size="30" fill="#aaa3b8" letter-spacing="2">오늘의 밤에 어울리는 술을 담아 전합니다</text>
+  <!-- 브랜드 문구 (가운데, 달 없음) -->
+  <text x="600" y="300" text-anchor="middle" font-family="Batang, 'Malgun Gothic', serif" font-size="210" font-weight="700" fill="#f3eee2" letter-spacing="30">담월</text>
+  <text x="600" y="395" text-anchor="middle" font-family="Batang, 'Malgun Gothic', serif" font-size="50" fill="#e8dcb5" letter-spacing="10">달빛을 담은 술 한 병</text>
+  <text x="600" y="455" text-anchor="middle" font-family="Batang, 'Malgun Gothic', serif" font-size="30" fill="#aaa3b8" letter-spacing="3">오늘의 밤에 어울리는 술을 담아 전합니다</text>
 </svg>`;
 
 await sharp(Buffer.from(svg)).png().toFile(out);
