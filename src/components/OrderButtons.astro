@@ -1,0 +1,17 @@
+---
+// 전화·카톡 주문 버튼. config.js 값 있으면 버튼, 없으면 "준비중" 안내.
+import { SITE } from '../config.js';
+const { phone, kakao } = SITE;
+const hasAny = phone || kakao;
+---
+<div class="order-actions">
+  {phone && (
+    <a href={`tel:${phone}`} class="btn btn-primary">📞 전화 주문 {phone}</a>
+  )}
+  {kakao && (
+    <a href={kakao} class="btn btn-outline" target="_blank" rel="noopener">💬 카톡 문의</a>
+  )}
+  {!hasAny && (
+    <p class="order-pending">전화·카톡 주문 준비중입니다.</p>
+  )}
+</div>

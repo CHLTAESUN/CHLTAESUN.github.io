@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import OrderButtons from '../../components/OrderButtons.astro';
+import products from '../../data/products.json';
+
+// 상품 데이터마다 페이지 1장 자동 생성.
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+---
+<Base title={product.name} description={product.description}>
+  <section class="container">
+    <div class="product-detail">
+      <div class="detail-img">
+        <img src={product.image} alt={product.name} />
+      </div>
+      <div>
+        <div class="card-cat">{product.category}</div>
+        <h1>{product.name}</h1>
+        <div class="detail-price">{product.price}</div>
+        <p class="detail-desc">{product.description}</p>
+        <OrderButtons />
+        <p style="margin-top:1rem;font-size:0.85rem;color:var(--muted)">
+          주문은 전화·카카오톡으로 받습니다.
+        </p>
+      </div>
+    </div>
+    <p style="padding-bottom:3rem"><a href="/products/" class="btn btn-outline">← 목록으로</a></p>
+  </section>
+</Base>

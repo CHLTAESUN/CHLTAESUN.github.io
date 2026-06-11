@@ -1,0 +1,226 @@
+/* ===== 색·폰트 변수. 브랜드 색 바꾸려면 여기만. ===== */
+:root {
+  --bg: #15131f;          /* 밤하늘, 살짝 보랏빛 */
+  --surface: #1e1a2b;     /* 카드·헤더 면 (보라톤) */
+  --text: #ece9e1;        /* 달빛 흰색 */
+  --muted: #9a93ac;       /* 흐린 글씨 (보라기) */
+  --line: #2f2a40;        /* 경계선 */
+  --brand: #e8dcb5;       /* 달빛 골드 (버튼) */
+  --brand-contrast: #15131f;
+  --accent: #c9b88a;
+  --max: 1100px;
+  --radius: 12px;
+  --gap: 1.25rem;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+  color: var(--text);
+  /* 전체 은은한 보라빛 밤하늘 */
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(120,90,180,0.16), rgba(120,90,180,0) 55%),
+    linear-gradient(180deg, #1a1530 0%, #15131f 45%, #141020 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .logo { font-weight: 600; letter-spacing: -0.01em; }
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ===== 버튼 ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--brand);
+  transition: opacity 0.15s, transform 0.05s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--brand); color: var(--brand-contrast); }
+.btn-primary:hover { opacity: 0.85; }
+.btn-outline { background: transparent; color: var(--brand); }
+.btn-outline:hover { background: var(--brand); color: var(--brand-contrast); }
+
+/* ===== 헤더 ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(18,20,29,0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.logo { font-weight: 800; font-size: 1.25rem; }
+.nav { display: flex; gap: 0.5rem; }
+.nav a {
+  color: var(--text);
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.nav a.active { color: var(--text); }
+.nav a:hover {
+  color: var(--text);
+  border-color: var(--brand);
+  background: rgba(232,220,181,0.06);
+}
+
+/* ===== 푸터 ===== */
+.site-footer {
+  margin-top: 4rem;
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.site-footer .container { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; }
+.footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ===== 히어로 ===== */
+.hero {
+  position: relative;
+  min-height: 46vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  /* 보라빛 밤하늘 (사진 둘레와 자연스럽게 이어짐) */
+  background:
+    radial-gradient(ellipse at 50% 6%, rgba(150,120,200,0.18), rgba(150,120,200,0) 50%),
+    linear-gradient(180deg, #1d1834 0%, var(--bg) 75%);
+}
+/* 달 사진 — 원본 크기 가깝게(선명) + 가장자리 보라로 페이드 */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, 92%);
+  height: 290px;
+  background: url('/images/moon-photo.jpg') center 38% / cover no-repeat;
+  -webkit-mask: radial-gradient(ellipse 62% 64% at 50% 44%, #000 52%, transparent 80%);
+          mask: radial-gradient(ellipse 62% 64% at 50% 44%, #000 52%, transparent 80%);
+  pointer-events: none;
+}
+.hero .container { padding-bottom: 3.5rem; }
+.hero h1 { color: #f3eee2; position: relative; z-index: 3; text-shadow: 0 2px 22px rgba(10,8,16,0.85); }
+.hero p { color: #d7d0e0; position: relative; z-index: 3; text-shadow: 0 1px 12px rgba(10,8,16,0.8); }
+.hero-actions { position: relative; z-index: 3; }
+/* 히어로 버튼: 기본은 테두리만, hover 시 골드 채움 (눌린 듯 보이지 않게) */
+.hero-actions .btn {
+  background: rgba(255,255,255,0.04);
+  color: #f3eee2;
+  border-color: rgba(232,220,181,0.65);
+}
+.hero-actions .btn:hover {
+  background: var(--brand);
+  color: var(--brand-contrast);
+  border-color: var(--brand);
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); margin: 0 0 1rem; letter-spacing: -0.02em; }
+.hero p { font-size: 1.15rem; color: var(--muted); max-width: 36rem; margin: 0 auto 2rem; }
+.hero-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+
+/* ===== 섹션 ===== */
+.section { padding: 3rem 0; }
+.section-title { font-size: 1.75rem; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
+
+/* ===== 상품 그리드 ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--gap);
+}
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+}
+.card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.45); border-color: var(--brand); transform: translateY(-2px); }
+.card-img { aspect-ratio: 1/1; background: #232734; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; }
+.card-body { padding: 1rem; }
+.card-cat { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.card-name { font-weight: 600; margin: 0.25rem 0; }
+.card-price { font-weight: 700; }
+
+/* ===== 필터 ===== */
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.filter-btn.active { background: var(--brand); color: var(--brand-contrast); border-color: var(--brand); }
+
+/* ===== 상품 상세 ===== */
+.product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 3rem 0; }
+.product-detail .detail-img { aspect-ratio: 1/1; background: #232734; border-radius: var(--radius); overflow: hidden; }
+.product-detail .detail-img img { width: 100%; height: 100%; object-fit: cover; }
+.detail-price { font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0 1.5rem; }
+.detail-desc { color: var(--muted); margin-bottom: 2rem; white-space: pre-line; }
+
+/* ===== 주문 버튼 ===== */
+.order-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.order-pending { color: var(--muted); font-style: italic; }
+
+/* ===== 일반 본문 ===== */
+.prose { max-width: 42rem; }
+.prose h1 { font-size: 2rem; letter-spacing: -0.02em; }
+.prose h2 { font-size: 1.4rem; margin-top: 2rem; }
+.prose p { color: #c7ccd6; }
+.prose a { color: var(--brand); text-decoration: underline; }
+
+/* ===== FAQ ===== */
+.faq-item { border-bottom: 1px solid var(--line); padding: 1.25rem 0; }
+.faq-q { font-weight: 600; cursor: pointer; }
+.faq-a { color: var(--muted); margin-top: 0.5rem; }
+
+/* ===== 문의 ===== */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.contact-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+.contact-card .label { font-size: 0.8rem; color: var(--muted); }
+.contact-card .value { font-weight: 600; font-size: 1.1rem; margin-top: 0.25rem; }
+
+/* ===== 반응형 ===== */
+@media (max-width: 720px) {
+  .nav { gap: 1rem; font-size: 0.9rem; }
+  .product-detail { grid-template-columns: 1fr; }
+  .hero { padding: 3rem 0; }
+}

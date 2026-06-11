@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config.js';
+---
+<Base title="소개" description={`${SITE.name} 브랜드 소개`}>
+  <section class="section">
+    <div class="container prose">
+      <h1>브랜드 소개</h1>
+      <p>여기에 브랜드 이야기를 적으세요. 어떻게 시작했는지, 무엇을 파는지, 왜 믿을 만한지.</p>
+
+      <h2>우리가 추구하는 것</h2>
+      <p>가치·철학·차별점을 적으세요. 지금은 placeholder 문구입니다.</p>
+
+      <h2>주문 안내</h2>
+      <p>담월의 술은 전화·카카오톡으로 주문하실 수 있습니다. 자세한 안내는 <a href="/contact/">주문·문의</a> 페이지를 참고하세요.</p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,16 @@
+---
+import { SITE } from '../config.js';
+---
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <strong>{SITE.storeName || SITE.name}</strong><br />
+      {SITE.address && <>{SITE.address}<br /></>}
+      {SITE.phone && <>주문·문의 {SITE.phone}</>}
+    </div>
+    <div class="footer-links">
+      {SITE.kakao && <a href={SITE.kakao} target="_blank" rel="noopener">카카오톡</a>}
+      {SITE.instagram && <a href={SITE.instagram} target="_blank" rel="noopener">인스타그램</a>}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import products from '../../data/products.json';
+
+const categories = ['전체', ...new Set(products.map((p) => p.category))];
+---
+<Base title="상품" description="전체 상품 목록">
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">전체 상품</h1>
+
+      <div class="filters">
+        {categories.map((cat) => (
+          <button class={`filter-btn ${cat === '전체' ? 'active' : ''}`} data-cat={cat}>{cat}</button>
+        ))}
+      </div>
+
+      <div class="grid" id="product-grid">
+        {products.map((p) => (
+          <div class="product-item" data-cat={p.category}>
+            <ProductCard product={p} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const btns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.product-item');
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        btns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        items.forEach((item) => {
+          item.style.display = cat === '전체' || item.dataset.cat === cat ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</Base>

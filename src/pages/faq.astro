@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+
+const faqs = [
+  { q: '배송은 얼마나 걸리나요?', a: '여기에 배송 안내를 적으세요. (placeholder)' },
+  { q: '교환·환불이 되나요?', a: '여기에 교환·환불 정책을 적으세요. (placeholder)' },
+  { q: '주문은 어떻게 하나요?', a: '전화 또는 카카오톡으로 주문을 받습니다. 주문·문의 페이지의 연락처로 연락 주세요.' },
+  { q: '술은 미성년자도 살 수 있나요?', a: '아니요. 주류이므로 만 19세 이상 성인만 구매·수령 가능하며, 수령 시 성인 인증이 필요합니다.' },
+  { q: '대량 주문도 가능한가요?', a: '여기에 답변을 적으세요. (placeholder)' },
+];
+---
+<Base title="FAQ" description="자주 묻는 질문 · 배송·교환 안내">
+  <section class="section">
+    <div class="container prose">
+      <h1>자주 묻는 질문</h1>
+      {faqs.map((item) => (
+        <details class="faq-item">
+          <summary class="faq-q">{item.q}</summary>
+          <div class="faq-a">{item.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+</Base>

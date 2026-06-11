@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { SITE } from '../config.js';
+import products from '../data/products.json';
+
+const featured = products.filter((p) => p.featured);
+---
+<Base>
+  <section class="hero">
+    <div class="container">
+      <h1>{SITE.tagline}</h1>
+      <p>{SITE.description}</p>
+      <div class="hero-actions">
+        <a href="/products/" class="btn btn-primary">술 둘러보기</a>
+        <a href="/contact/" class="btn btn-outline">주문·문의</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">대표 상품</h2>
+      <div class="grid">
+        {featured.map((p) => <ProductCard product={p} />)}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "sul-1",
+    "name": "술 이름 1",
+    "price": "29,000원",
+    "category": "약주",
+    "image": "/images/placeholder.svg",
+    "featured": true,
+    "description": "여기에 술 설명을 적으세요. 도수·용량·맛·어울리는 안주 등. 지금은 placeholder."
+  },
+  {
+    "slug": "sul-2",
+    "name": "술 이름 2",
+    "price": "39,000원",
+    "category": "약주",
+    "image": "/images/placeholder.svg",
+    "featured": true,
+    "description": "여기에 술 설명을 적으세요. 지금은 placeholder."
+  },
+  {
+    "slug": "sul-3",
+    "name": "술 이름 3",
+    "price": "19,000원",
+    "category": "탁주",
+    "image": "/images/placeholder.svg",
+    "featured": false,
+    "description": "여기에 술 설명을 적으세요. 지금은 placeholder."
+  },
+  {
+    "slug": "sul-4",
+    "name": "술 이름 4",
+    "price": "49,000원",
+    "category": "증류주",
+    "image": "/images/placeholder.svg",
+    "featured": false,
+    "description": "여기에 술 설명을 적으세요. 지금은 placeholder."
+  }
+]

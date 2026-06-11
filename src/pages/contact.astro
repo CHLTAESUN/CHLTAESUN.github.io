@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config.js';
+const hasAny = SITE.phone || SITE.kakao || SITE.instagram;
+---
+<Base title="주문·문의" description="전화·카카오톡 주문 안내">
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">주문·문의</h1>
+      <p style="color:var(--muted);margin-bottom:2rem">
+        담월은 전화·카카오톡으로 주문을 받습니다. 편한 채널로 연락 주세요.
+      </p>
+
+      <div class="contact-grid">
+        {SITE.phone && (
+          <a class="contact-card" href={`tel:${SITE.phone}`}>
+            <div class="label">전화 주문</div>
+            <div class="value">{SITE.phone}</div>
+          </a>
+        )}
+        {SITE.kakao && (
+          <a class="contact-card" href={SITE.kakao} target="_blank" rel="noopener">
+            <div class="label">카카오톡</div>
+            <div class="value">1:1 문의 ↗</div>
+          </a>
+        )}
+        {SITE.instagram && (
+          <a class="contact-card" href={SITE.instagram} target="_blank" rel="noopener">
+            <div class="label">인스타그램</div>
+            <div class="value">DM 보내기 ↗</div>
+          </a>
+        )}
+      </div>
+
+      {!hasAny && (
+        <p style="color:var(--muted)">연락처 준비중입니다. 곧 전화·카카오톡 안내가 올라갑니다.</p>
+      )}
+    </div>
+  </section>
+</Base>
