@@ -8,6 +8,8 @@ const { title, description } = Astro.props;
 const pageTitle = title ? `${title} · ${SITE.name}` : SITE.name;
 const pageDesc = description || SITE.description;
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+// 링크 미리보기 카드 이미지 (담월 문구)
+const ogImage = new URL('/og.png', Astro.site).href;
 ---
 <!doctype html>
 <html lang="ko">
@@ -20,6 +22,11 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:description" content={pageDesc} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href="/images/placeholder.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
